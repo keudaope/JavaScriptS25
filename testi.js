@@ -1,0 +1,4 @@
+function huuda()
+{
+    alert("Huhuu");
+}
