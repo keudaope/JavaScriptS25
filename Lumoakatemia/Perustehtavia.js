@@ -20,7 +20,7 @@ console.log(l1*l2);
 console.log(l1/l2);
 
 /* Tehtävä 6 Celsius --> Fahrenheit */
-var cel = 100;
+var cel = 0;
 var fah = cel * 1.8 + 32;
 console.log(`${cel} Celsiusastetta on ${fah} Fahrenheit astetta`);
 
