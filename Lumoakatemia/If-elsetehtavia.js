@@ -15,14 +15,18 @@ function kahdestaSuurempi(luku1, luku2)
 }
 kahdestaSuurempi(3,2);
 /* Tehtävä 2 - kolmesta suurin */
-function kolmestaSuurin(l1, l2, l3){
-    if(l1 > l2 && l1 > l3)
+function kolmestaSuurin(luku1, luku2, luku3){
+    if(luku1 > luku2 && luku1 > luku3)
     {
         console.log("Luku1 on suurin");
     }
-    else if(l2 > l3)
+    else if(luku2 > luku3)
     {
         console.log("Luku2 on suurin")
+    }
+    else if(luku1 == luku2 && luku1 == luku3)
+    {
+        console.log("Luvut ovat yhtäsuuret")
     }
     else{
         console.log("Luku3 on suurin")
@@ -79,3 +83,17 @@ karkausvuosi(2024);
 karkausvuosi(2000);
 karkausvuosi(1900);
 karkausvuosi(1997);
+
+function parillinenPariton(luku)
+{
+    if(luku % 2 == 0)
+    {
+        console.log("Luku on parillinen");
+    }
+    else{
+        console.log("Luku on pariton")
+    }
+}
+parillinenPariton(0);
+parillinenPariton(3);
+parillinenPariton(16);
