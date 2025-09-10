@@ -84,6 +84,8 @@ karkausvuosi(2000);
 karkausvuosi(1900);
 karkausvuosi(1997);
 
+/* Tehtävä 5 - parillinen vaiko pariton */
+
 function parillinenPariton(luku)
 {
     if(luku % 2 == 0)
