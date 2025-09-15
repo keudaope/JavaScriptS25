@@ -100,6 +100,84 @@ parillinenPariton(0);
 parillinenPariton(3);
 parillinenPariton(16);
 
+
+/* Tehtävä 7 - kirjain vai ei */
+
+function kirjainko(merkki) {
+    if (merkki.length == 1 && merkki.match(/[a-öA-Ö]/i)) {
+        console.log("Annettu merkki on kirjain");
+    }
+    else {
+        console.log("Annettu merkki ei ole kirjain");
+    }
+}
+kirjainko("g");
+kirjainko(1);
+kirjainko("!");
+kirjainko("ä");
+kirjainko("H");
+kirjainko("Ö");
+
+/* Tehtävä 8 - vokaali / konsonantti */
+
+function vokaaliKonsonantti(merkki)
+{
+    if(merkki.match(/[aeiouyåäö]/i))
+    {
+        console.log("merkki on vokaali");
+    }
+    else if(merkki.match(/[bcdfghjklmnppqrstvwxz]/i))
+    {
+        console.log("Merkki on konsonantti")
+    }
+    else{
+        console.log("Merkki ei ole vokaali eikä konsonantti")
+    }
+}
+
+vokaaliKonsonantti("C");
+vokaaliKonsonantti("e");
+vokaaliKonsonantti("?");
+
+/* Tehtävä 9 - kirjain, numero vai erikoismerkki */
+
+function kiNuEm(merkki)
+{
+    if(merkki.match(/[a-öA-Ö]/i))
+    {
+        console.log("Annettu merkki on kirjain");
+    }
+    else if(merkki.match(/[0-9]/i))
+    {
+        console.log("Annettu merkki on numero")
+    }
+    else {
+        console.log("Annettu merkki on erikoismerkki")
+    }
+}
+kiNuEm("A");
+kiNuEm("6");
+kiNuEm("/");
+
+/* Tehtävä 10 - iso vai pieni kirjain */
+function isoPieni(merkki)
+{
+    if(merkki.match(/[a-ö]/))
+    {
+        console.log("Merkki on pieni kirjain")
+    }
+    else if(merkki.match(/[A-Ö]/))
+    {
+        console.log("Merkki on iso kirjain");
+    }
+    else{
+        console.log("Annettu merkki ei ole kirjain")
+    }
+}
+isoPieni("v");
+isoPieni("T");
+isoPieni("?");
+
 /* Tehtävä 11 - Voitto / tappio */
 function voittoTappio(myynnit, ostot)
 {
@@ -119,6 +197,33 @@ function voittoTappio(myynnit, ostot)
 voittoTappio(500, 300);
 voittoTappio(300, 500);
 voittoTappio(300, 300);
+
+/* Tehtävä 12 - arvosanat */
+function koePisteet(Ma, KeFy, Ai, Ru, En) {
+    var taulukko = [["Matematiikka", Ma], ["KemiaFysiikka", KeFy], ["Aidinkieli", Ai], ["Ruotsi", Ru], ["Englanti", En]];
+    for (var i = 0; i < taulukko.length; i++) {
+        if (taulukko[i][1] >= 90) {
+            console.log(taulukko[i][0] + ": K5");
+        }
+        else if (taulukko[i][1] >= 80) {
+            console.log(taulukko[i][0] + ": H4");
+        }
+        else if (taulukko[i][1] >= 70) {
+            console.log(taulukko[i][0] + ": H3");
+        }
+        else if (taulukko[i][1] >= 60) {
+            console.log(taulukko[i][0] + ": T2");
+        }
+        else if (taulukko[i][1] >= 50) {
+            console.log(taulukko[i][0] + ": T1");
+        }
+        else {
+            console.log(taulukko[i][0] + ": Hylätty");
+        }
+    }
+}
+koePisteet(55, 78, 63, 88, 94);
+koePisteet(99, 45, 70, 80, 60);
 
 /* Tehtävä 13 viikonpäivät */
 
@@ -247,7 +352,7 @@ function muunna(rahasumma)
     console.log(`Antamasi summa vastaa \n${vsataa} * 500 €\n${ksataa} * 200 €\n${sata} * 100 €\n${vkymmenta} * 50 €\n${kkymmenta} * 20 €\n${kymmenen} * 10 €\n${viisi} * 5 €\n${keuroa} * 2 €\n${euro} * 1 €\n${vsenttia} * 0.50 €\n${ksenttia} * 0.20 €\n${kysenttia} * 0.10 €\n${viisisenttia} * 0.05 €`);
 }
 muunna(1378.85);
-
+/* Tehtävä 18 - onko kolmio */
 function onkoKolmio(deg1, deg2, deg3)
 {
     if(deg1 + deg2 + deg3 == 180)
