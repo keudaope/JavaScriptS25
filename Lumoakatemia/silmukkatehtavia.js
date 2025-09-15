@@ -117,5 +117,16 @@ seitsemas();
 function toiseksiSuurin()
 {
     var taulukko =  [6, 7, 2, 4, 3, 8, 1, 9, 0, 3, 5, 7, 3, 6, 8, 2, 4, 3]
-    
+    var suurin, toiseksisuurin;
+    suurin = taulukko[0];
+    for(var i = 0; i < taulukko.length; i++)
+    {
+        if(taulukko[i] > suurin)
+        {
+            toiseksisuurin = suurin;
+            suurin = taulukko[i];
+        }
+    }
+    console.log(`Toiseksi suurin luku taulukosta ${taulukko} on ${toiseksisuurin}`)
 }
+toiseksiSuurin()
