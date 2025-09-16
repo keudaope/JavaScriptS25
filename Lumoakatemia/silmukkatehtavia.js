@@ -130,3 +130,40 @@ function toiseksiSuurin()
     console.log(`Toiseksi suurin luku taulukosta ${taulukko} on ${toiseksisuurin}`)
 }
 toiseksiSuurin()
+
+/* Tehtävä 10 - 3, 5, 15 tulostus */
+function jaolliset()
+{
+    for(var i = 0; i <=100; i++)
+    {
+        if(i % 15 == 0)
+        {
+            console.log(" viisitoista")
+        }
+        if(i % 5 == 0)
+        {
+            console.log(" viisi")
+        }
+        if(i % 3 == 0)
+        {
+            console.log(" kolme")
+        }
+        else{
+            console.log(" " + i)
+        }
+    }
+}
+jaolliset();
+
+/* Tehtävä 11 - Fibonaccin numerot */
+
+function fibonacci()
+{
+    var fibo = [0, 1];
+    for(var i = 2; i <10; i++)
+    {
+        fibo.push(fibo[(i-2)] + fibo[(i-1)]);
+        
+    }
+    console.log(fibo)
+}
