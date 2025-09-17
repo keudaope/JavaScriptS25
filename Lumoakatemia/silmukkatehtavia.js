@@ -167,3 +167,109 @@ function fibonacci()
     }
     console.log(fibo)
 }
+
+/* Tehtävä 12 - Palidromi */
+function palidromi(sana)
+{
+    var uusisana = "";
+    for(var i = sana.length-1; i >= 0; i--)
+    {
+        uusisana += sana[i];
+    }
+    if(uusisana == sana)
+    {
+        console.log("Sana on palidromi")
+    }
+    else{
+        console.log("Sana ei ole palidromi")
+    }
+}
+
+palidromi("aaroporaa")
+palidromi("aaro")
+palidromi("innostunutsonni")
+
+/* Tehtävä 13 - Fibonaccin parillisten lukujen summa */
+function fibonacci()
+{
+    var fibo = [0, 1];
+    var summa = 0;
+    for(var i = 2; i <10; i++)
+    {
+        fibo.push(fibo[(i-2)] + fibo[(i-1)]);
+        
+    }
+    for(var i = 0; i < fibo.length; i++)
+    {
+        if(fibo[i] % 2 == 0) 
+        {
+            summa += fibo[i];
+        }
+    }
+    console.log(fibo)
+    console.log(summa)
+}
+
+fibonacci()
+
+/* Tehtävä 14 - Fibonaccin parittomien lukujen summa */
+function fibonacci()
+{
+    var fibo = [0, 1];
+    var summa = 0;
+    for(var i = 2; i <10; i++)
+    {
+        fibo.push(fibo[(i-2)] + fibo[(i-1)]);
+        
+    }
+    for(var i = 0; i < fibo.length; i++)
+    {
+        if(fibo[i] % 2 != 0) 
+        {
+            summa += fibo[i];
+        }
+    }
+    console.log(fibo)
+    console.log(summa)
+}
+
+fibonacci()
+
+/* Tehtävä 15 - kahden muuttujan suurin yhteinen nimittäjä */
+function suurinNimittaja(a, b)
+{
+    var temp;
+    if (b > a)
+    {
+        temp = a;
+        a = b;
+        b = temp;
+    }
+    while ( b > 0)
+    {
+         temp = b;
+         b = a % b;
+         a = temp;
+    }
+    console.log("Muuttujien yhteinen nimittäjä on " + temp)
+}
+suurinNimittaja(66, 12)
+
+/* Tehtävä 16 - merkkijono ilman pilkkuja */
+function numeroJono(merkkijono)
+{
+    var numerot = merkkijono.split(",")
+    var numero;
+    var tulostettavatNumerot = [];
+    for(var i = 0; i < numerot.length; i++)
+    {
+        numero = numerot[i].trim();
+        if(!isNaN(numero))
+        {
+            tulostettavatNumerot.push(numero)
+        }
+    }
+    console.log(tulostettavatNumerot.join(" "))
+}
+
+numeroJono('7, 3, 9, 2, 44, 90, 123')
