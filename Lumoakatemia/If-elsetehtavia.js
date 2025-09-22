@@ -289,7 +289,7 @@ function aanestys(ika)
         console.log("Voit äänestää");
     }
     else{
-        console.log("Et voi äänestää")
+        console.log("Et voi äänestää");
     }
 }
 
@@ -364,4 +364,4 @@ function onkoKolmio(deg1, deg2, deg3)
     }
 }
 onkoKolmio(100, 42, 38);
-onkoKolmio(101, 42, 38)
+onkoKolmio(101, 42, 38);
