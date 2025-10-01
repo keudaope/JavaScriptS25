@@ -23,18 +23,18 @@ kertoma(5)
 /* Tehtävä 3 - nro 3 ensimmäinen esiintymä */
 function esiintyma()
 {
-    taulukko = [6, 7, 2, 4, 3, 8, 1, 9, 0, 3, 5, 7, 3, 6, 8, 2, 4, 3]
+    taulukko = [6, 7, 2, 4, 3, 8, 1, 9, 0, 3, 5, 7, 3, 6, 8, 2, 4, 3];
 
 for (var i = 0; i < taulukko.length; i++)
 {
     if(taulukko[i] == 3)
     {
-        console.log(`Numero 3 on taulukon ${i}.s jäsen`)
-        i = taulukko.length
+        console.log(`Numero 3 on taulukon ${i}.s jäsen`);
+        i = taulukko.length-1;
     }
 }
 }
-esiintyma();
+    
 
 /* Tehtävä 4 - sanan kääntö */
 function kaanto(sana)
