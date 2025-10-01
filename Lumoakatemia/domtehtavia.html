@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-tehtäviä</title>
+    <script src="domtehtavia.js"></script>
+    <link rel="stylesheet" href="domtehtavia.css">
+</head>
+<body onload="haeKoko()" onresize="haeKoko()">
+    <h3>Tehtävä 1</h3>
+    <p id="muokattava">Muokkaa tätä tekstiä</p>
+    <button onclick="muokkaa()">Muokkaa</button>
+
+    <h3>Tehtävä 2</h3>
+    <label>Etunimi: </label><br />
+    <input type="type" name="name" value="" id="etunimi" /><br />
+    <label>Sukunimi: </label><br />
+    <input type="type" name="name" value="" id="sukunimi" /><br />
+    <button onclick="haeTiedot()">Hae tiedot</button>
+
+    <h3>Tehtävä 3</h3>
+    <p id="vaihda">Vaihda tämän kappaleen tausta</p>
+    <button onclick="vaihdaTausta()">vaihda tausta</button>
+
+    <h3>Tehtävä 4</h3>
+    <a id="w3r" type="text/html" hreflang="en-us" rel="nofollow" 
+    target="_self" href="https://www.w3resource.com/">
+    Hae tämän linkin tiedot</a>
+    <button onclick="linkinTiedot()">Hae linkin tiedot</button>
+
+    <h3>Tehtävä 5</h3>
+    <table id="sampleTable" border="1">
+    <tr><td>Row1 cell1</td>
+    <td>Row1 cell2</td></tr>
+    <tr><td>Row2 cell1</td>
+    <td>Row2 cell2</td></tr>
+    </table><br>
+    <input type="button" onclick="lisaaRivi()" value="Lisää rivi">
+
+    <h3>Tehtävä 6</h3>
+    <table id="taulukko" border="1">
+        <tr><td>Row1 cell1</td>
+        <td>Row1 cell2</td></tr>
+        <tr><td>Row2 cell1</td>
+        <td>Row2 cell2</td></tr>
+        <tr><td>Row3 cell1</td>
+        <td>Row3 cell2</td></tr>
+    </table><br>
+    <label>Anna muutettava rivi</label><br />
+    <input type="text" id="rivi"><br />
+    <label>Anna muutettava rivi</label><br />
+    <input type="text" id="solu"><br />
+    <label>Anna muutettava sisältö</label><br />
+    <input type="text" id="sisalto"><br />
+    <input type="button" onclick="muutaSolu()" value="Muuta solun arvo">
+
+    <h3>Tehtävä 7</h3>
+    <label>Anna rivien määrä</label><br />
+    <input type="text" id="rivi1"><br />
+    <label>Anna sarakkeiden määrä</label><br />
+    <input type="text" id="solu1"><br />
+    <input type="button" onclick="luoTaulukko()" value="Luo taulukko">
+    <table id="taulukko1" border="1">
+    </table>
+
+    <h3>Tehtävä 8 ja 9</h3>
+     <select id="varit">
+        <option value="punainen">Punainen</option>
+        <option value="sininen">Sininen</option>
+        <option value="vihreä">Vihreä</option>
+        <option value="keltainen">Keltainen</option>
+        <option value="oranssi">Oranssi</option>
+        <input type="button" onclick="poistaValinta()" value="Poista valinta">
+        <input type="button" onclick="laskeElementit()" value="Laske elementit">
+    </select>
+
+    <h3>Tehtävä 10</h3>
+<p>
+<a href="#" onMouseOver="korosta()" onMouseOut="palaaNormaaliin()">
+    Linkkilause
+</a>
+</p>
+<p>
+    <strong>We</strong> have just started <strong>this</strong>
+    section for the users (<strong>beginner</strong> to intermediate) who
+    <strong>want</strong> to work with <strong>various</strong>
+    JavaScript <strong>problems</strong> and write scripts online
+    to <strong>test</strong> their JavaScript <strong>skill</strong>.
+</p>
+
+<h3>Tehtävä 11</h3>
+<div id="wh">
+    <!-- Tulosta leveys ja korkeus tänne -->
+</div>
+
+<h3>Tehtävä 12</h3>
+<p id="muutettava">Tämä teksti muuttuu.</p>
+<input type="button" onclick="muutaSisalto()" value="Muuta sisältö">
+
+<h3>Tehtävä 13</h3>
+<div id="container"></div>
+<input type="button" onclick="luoElementti()" value="Luo elementti"> 
+
+<h3>Tehtävä 14</h3>
+<p id="poistettava">Tämä poistetaan.</p>
+<input type="button" onclick="poistaElementti()" value="Poista elementti"> 
+
+<h3>Tehtävä 15</h3>
+<p id="muokattava1">Tämä saa luokan.</p>
+<input type="button" onclick="lisaaLuokka()" value="Lisaa luokka">
+
+<h3>Tehtävä 16</h3>
+<p class="valittava">Valitse minut</p>
+<input type="button" onclick="qs()" value="Query Selector"> 
+
+<h3>Tehtävä 17</h3>
+<ul>
+    <li>Kohta 1</li>
+    <li>Kohta 2</li>
+    <li>Kohta 3</li>
+</ul>
+<input type="button" onclick="qsa()" value="Query Selector All">
+
+<h3>Tehtävä 18</h3>
+ <p id="tyylittava">Muuta tyyliä</p>
+<input type="button" onclick="muutaTyyli()" value="Muuta tyyliä">
+
+<h3>Tehtävä 19</h3>
+<div data-arvo="123">Data-arvo</div>
+<input type="button" onclick="haeArvo()" value="Hae arvo">
+</html>
