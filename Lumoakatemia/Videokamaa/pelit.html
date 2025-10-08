@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Pong-peli</title>
+  <style>
+    body {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    canvas {
+      border: 2px solid #fff;
+      background: #111;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="pong" width="800" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById("pong");
+    const ctx = canvas.getContext("2d");
+
+    // Pelaajat ja pallo
+    const paddleWidth = 10, paddleHeight = 100;
+    const player = { x: 10, y: canvas.height / 2 - paddleHeight / 2, score: 0 };
+    const ai = { x: canvas.width - 20, y: canvas.height / 2 - paddleHeight / 2, score: 0 };
+    const ball = {
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      radius: 10,
+      speed: 5,
+      velocityX: 5,
+      velocityY: 5
+    };
+
+    // Piirtofunktiot
+    function drawRect(x, y, w, h, color) {
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, w, h);
+    }
+
+    function drawCircle(x, y, r, color) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function drawText(text, x, y, color) {
+      ctx.fillStyle = color;
+      ctx.font = "40px Arial";
+      ctx.fillText(text, x, y);
+    }
+
+    // Pelaajan ohjaus
+    canvas.addEventListener("mousemove", evt => {
+      let rect = canvas.getBoundingClientRect();
+      player.y = evt.clientY - rect.top - paddleHeight / 2;
+    });
+
+    // Törmäystarkistus
+    function collision(b, p) {
+      p.top = p.y;
+      p.bottom = p.y + paddleHeight;
+      p.left = p.x;
+      p.right = p.x + paddleWidth;
+
+      return b.x - b.radius < p.right && b.x + b.radius > p.left &&
+             b.y - b.radius < p.bottom && b.y + b.radius > p.top;
+    }
+
+    // Pelin päivitys
+    function update() {
+      ball.x += ball.velocityX;
+      ball.y += ball.velocityY;
+
+      // AI liikkuu
+      ai.y += ((ball.y - (ai.y + paddleHeight / 2))) * 0.1;
+
+      // Reunat
+      if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
+        ball.velocityY = -ball.velocityY;
+      }
+
+      // Pelaajan törmäys
+      let playerOrAi = (ball.x < canvas.width / 2) ? player : ai;
+      if (collision(ball, playerOrAi)) {
+        let angle = (ball.y - (playerOrAi.y + paddleHeight / 2)) * Math.PI / 180;
+        let direction = (ball.x < canvas.width / 2) ? 1 : -1;
+        ball.velocityX = direction * ball.speed * Math.cos(angle);
+        ball.velocityY = ball.speed * Math.sin(angle);
+        ball.speed += 0.5;
+      }
+
+      // Pisteet
+      if (ball.x - ball.radius < 0) {
+        ai.score++;
+        resetBall();
+      } else if (ball.x + ball.radius > canvas.width) {
+        player.score++;
+        resetBall();
+      }
+    }
+
+    function resetBall() {
+      ball.x = canvas.width / 2;
+      ball.y = canvas.height / 2;
+      ball.speed = 5;
+      ball.velocityX = -ball.velocityX;
+      ball.velocityY = 5 * (Math.random() > 0.5 ? 1 : -1);
+    }
+
+    // Piirrä kaikki
+    function render() {
+      drawRect(0, 0, canvas.width, canvas.height, "#111");
+      drawText(player.score, canvas.width / 4, 50, "#fff");
+      drawText(ai.score, 3 * canvas.width / 4, 50, "#fff");
+      drawRect(player.x, player.y, paddleWidth, paddleHeight, "#fff");
+      drawRect(ai.x, ai.y, paddleWidth, paddleHeight, "#fff");
+      drawCircle(ball.x, ball.y, ball.radius, "#fff");
+    }
+
+    // Pääsilmukka
+    function game() {
+      update();
+      render();
+    }
+
+    setInterval(game, 1000 / 60); // 60 FPS
+  </script>
+</body>
+</html>
