@@ -146,6 +146,6 @@ function arvoLotto()
       numbers.add(randomNumber);  // Lisätään numero settiin
     }
     let lottonumerot =  Array.from(numbers);
-    lottonumerot.sort((a,b)=> (a-b));
+    lottonumerot.sort((a, b) => (a - b));
    document.getElementById('ltaulu').innerHTML = lottonumerot;
 }
