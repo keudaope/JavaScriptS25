@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lomake.css">
+</head>
+<body>
+    <form onsubmit="return false">
+        <label for="nimi">Nimi:</label><br>
+        <input type="text" id="nimi"><br>
+        <label for="salasana">Salasana:</label><br>
+        <input type="password" id="salasana"><br>
+        <label for="kayttaja">Millainen koneenkäyttäjä olet:</label><br>
+        <input type="radio" name="kayttaja" id="himo" value="Himokäyttäjä">Himokäyttäjä<br>
+        <input type="radio" name="kayttaja" id="opiskelu">Käytän opiskeluun<br>
+        <input type="radio" name="kayttaja" id="en kayta">En käytä konetta<br>
+        <label for="sivu">Mitä mieltä olet sivustani tähän asti:</label><br>
+        <input type="checkbox" name="hienot" id="hienot">Hienot<br>
+        <input type="checkbox" name="ammattimaiset" id="ammattimaiset">Ammattimaisesti tehdyt<br>
+        <input type="checkbox" name="ostan" id="ostan">Ostan sinulta!<br>
+        <label for="lempi">Mikä on lempiaineesi Keudassa: </label><br>
+        <select name="lempi" id="lempi">
+            <option value="">---valitse---</option>
+            <option value="ammatti">Ammattiaineet</option>
+            <option value="englanti">Englanti</option>
+            <option value="taide">Taide ja luova ilmaisu</option>
+            <option value="matematiikka">Matematiikka</option>
+        </select><br>
+        <label for="kehitys">Kerro, miten kehittäisit sivujani:</label><br>
+        <textarea rows="10" cols="40" id="kehitys"></textarea>  
+        <button onclick="tarkasta()">Tarkasta</button>
+    </form>
+</body>
+<script src="lomake.js"></script>
+</html>

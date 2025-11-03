@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kyselylomake — Tyylikäs demo</title>
+<link rel="stylesheet" href="lomake.css">
+</head>
+<body>
+  <div class="wrap">
+    <main class="card" role="main">
+      <header>
+        <h1 id="otsikko">Kutsu vastaamaan — Pieni kysely</h1>
+      </header>
+      <p id="kuvaus">Kiitos, että käytät hetken vastataksesi muutamaan ystävälliseen kysymykseen. Lomake hyödyntää selaimen HTML5-vali- dointia ja antaa selkeät virheilmoitukset tarvittaessa.</p>
+
+      <form id="kyselylomake">
+        <section style="grid-column:1;">
+          <fieldset>
+            <legend>Henkilötiedot</legend>
+
+            <label id="nimisyotto" for="nimi">Nimesi</label>
+            <div class="hint">Kirjoita koko nimesi. Minimi 3 merkkiä.</div>
+            <input id="nimi" name="nimi" type="text" minlength="3" required aria-describedby="nimHint" />
+
+            <label id="emailsyotto" for="email" style="margin-top:12px;">Sähköpostisi</label>
+            <div class="hint">Käytämme sähköpostia vain vastaustasi koskevaan viestintään.</div>
+            <input id="email" name="email" type="email" required aria-describedby="emailHint" />
+
+            <label id="ikasyotot" for="ika" style="margin-top:12px;">Ikäsi</label>
+            <div class="hint">Anna ikä numeroina (vuosia). Väli 13–120.</div>
+            <input id="ika" name="ika" type="number" required min="13" max="120" />
+
+          </fieldset>
+
+          <fieldset style="margin-top:14px;">
+            <legend>Preferenssit</legend>
+
+            <label for="pudotus">Valitse suosikkiympäristösi</label>
+            <div class="hint">Yksi valinta riittää.</div>
+            <select id="pudotus" name="pudotus" required>
+              <option value="" disabled selected>-- Valitse ympäristö --</option>
+              <option value="kaupunki">Kaupunki</option>
+              <option value="luonto">Luonto</option>
+              <option value="maaseutu">Maaseutu</option>
+              <option value="muu">Muu</option>
+            </select>
+
+            <div style="margin-top:12px">
+              <div style="font-weight:700;margin-bottom:6px">Miten matkustat mieluiten?</div>
+              <div class="small">Valitse yksi vaihtoehto.</div>
+              <div style="margin-top:8px">
+                <label><input type="radio" name="matkustus" value="auto" required> Auto</label><br>
+                <label><input type="radio" name="matkustus" value="juna"> Juna</label><br>
+                <label><input type="radio" name="matkustus" value="pyora"> Pyörä</label>
+              </div>
+            </div>
+
+            <div style="margin-top:12px">
+              <div style="font-weight:700;margin-bottom:6px">Harrastukset (voit valita useita)</div>
+              <div class="small">Valitse kaikki, jotka sopivat. Jokaisella checkboxilla on arvo-attribuutti.</div>
+              <div style="margin-top:8px">
+                <label><input type="checkbox" name="harrastus" value="urheilu"> Urheilu</label><br>
+                <label><input type="checkbox" name="harrastus" value="lukeminen"> Lukeminen</label><br>
+                <label><input type="checkbox" name="harrastus" value="koodaus"> Koodaus</label>
+              </div>
+            </div>
+
+          </fieldset>
+
+          <fieldset style="margin-top:14px;">
+            <legend>Lisätiedot</legend>
+            <label for="kommentit">Vapaamuotoiset kommentit</label>
+            <div class="hint">Kirjoita ylimääräiset ajatuksesi tähän.</div>
+            <textarea id="kommentit" name="kommentit" rows="5" placeholder="Hei — kerro rohkeasti..."></textarea>
+          </fieldset>
+        </section>
+
+        <aside class="controls" style="grid-column:2;">
+          <div class="meta">Katsaus</div>
+          <div style="padding:12px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02)">
+            Täytä nimesi, sähköpostisi ja ikäsi. Lomake käyttää selaimen omaa HTML5-validointia — kokeile antaa virheellinen arvo nähdäksesi virheilmoitukset.
+          </div>
+
+          <div class="actions">
+            <button id="laheta" type="submit">Lähetä vastaukseni</button>
+            <button id="tyhjenna" type="button">Tyhjennä</button>
+          </div>
+
+          <div id="viesti" aria-live="polite"></div>
+        </aside>
+
+      </form>
+
+    </main>
+  </div>
+
+  
+</body>
+</html>

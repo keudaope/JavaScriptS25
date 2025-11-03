@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="nelilaskin.css">
+</head>
+<body>
+  <section>
+
+    <table id="laskintable">
+      <tr>
+        <td style="background-color: #ffffff;" colspan="4"><p id="tulos"></p></td>
+      </tr>
+        <tr>
+          <td><button id="reset" type="button" onclick = "tyhjenna()">AC</button></td>
+          <td><button id="poisto" type="button" onclick = poistaViimeisin()>C</button></td>
+          <td><button id="pros" type="button" onclick="lisaa('%')">%</button></td>
+          <td><button id="jako" type="button" onclick="lisaa('/')">/</button></td>
+        </tr>
+        <tr>
+          <td><button id="7" type="button" value = "7" onclick="lisaa('7')">7</button></td>
+          <td><button id="8" type="button" value = "8" onclick="lisaa('8')">8</button></td>
+          <td><button id="9" type="button" value = "9" onclick="lisaa('9')">9</button></td>
+          <td><button id="kerto" type="button" onclick="lisaa('*')">*</button></td>
+        </tr>
+        <tr>
+          <td><button id="4" type="button" value = "4" onclick="lisaa('4')">4</button></td>
+          <td><button id="5" type="button" value = "5" onclick="lisaa('5')">5</button></td>
+          <td><button id="6" type="button" value = "6" onclick="lisaa('6')">6</button></td>
+          <td><button id="minus" type="button" onclick="lisaa('-')">-</button></td>
+        </tr>
+        <tr>
+          <td><button id="1" type="button" onclick="lisaa('1')">1</button></td>
+          <td><button id="2" type="button" onclick="lisaa('2')">2</button></td>
+          <td><button id="3" type="button" onclick="lisaa('3')">3</button></td>
+          <td><button id="plus" type="button" onclick="lisaa('+')">+</button></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button style="width: 204px;" id="0" type="button" onclick="lisaa('0')">0</button></td>
+          <td><button id="pilkku" type="button"  onclick="lisaa('.')">,</button></td>
+          <td><button id="yhtSuuri" type="button" onclick="laske()">=</button></td>
+        </tr>
+      </table>
+    </section>
+</body>
+<script src="nelilaskin.js"></script>
+</html>

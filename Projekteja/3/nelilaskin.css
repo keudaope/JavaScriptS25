@@ -1,0 +1,21 @@
+section{
+    margin: 0 auto;
+    width: 500px;
+}
+table{
+    border: 4px black solid;
+
+}
+input[type="text"]
+{
+    width: 410px;
+}
+td button{
+    width: 100px;
+}
+.levea{
+    width: 205px;
+}
+p{
+    text-align: right;
+}
