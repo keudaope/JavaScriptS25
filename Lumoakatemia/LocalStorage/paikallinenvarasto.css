@@ -1,0 +1,19 @@
+body
+{
+  background-color: #FDF5E6;
+}
+h2
+{
+  margin: 0 auto;
+  margin-bottom: 20px;
+  text-align: center;
+}
+fieldset
+{
+  margin: 0 auto;
+  width: 450px;
+}
+input
+{
+  border: 1px black dotted;
+}

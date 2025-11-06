@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Paikallinen varasto - Javascript</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js">   </script>
+  </head>
+  <body>
+    <h2 id="otsikko">Paikallinen varasto - Javascript - Jyrin esimerkki</h2>
+    <fieldset>
+      <input type="text" id="syottoAvain" placeholder="Ole hyv&auml; ja sy&ouml;t&auml; avain...">
+      <input type="text" id="syottoArvo" placeholder="Ole hyv&auml; ja sy&ouml;t&auml; arvo...">
+      <p></p>
+      <button type="button" id="syottoBtn" onclick="syota()">Sy&ouml;t&auml; tieto</button>
+      <button type="button" id="lueBtn" onclick="listaa()">Lue tiedot</button>
+    </fieldset>
+    <fieldset>
+      <legend>Paikallinen varasto</legend>
+      <div id="pvSyotto">
+
+      </div>
+    </fieldset>
+  </body>
+</html>
