@@ -1,10 +1,12 @@
 function store(){ //stores items in the localStorage
     var brand = document.getElementById('carBrand').value;
+    var model = document.getElementById('carModel').value;
     var price = document.getElementById('carPrice').value;
     var key = document.getElementById('key').value;
 
     const car = {
         brand: brand,
+        model: model,
         price: price,
     }
 
