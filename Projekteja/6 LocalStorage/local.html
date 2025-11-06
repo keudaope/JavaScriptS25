@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="local.css">
+</head>
+<body>
+    <h1>Paikallinen varasto</h1>
+    <fieldset>
+        <legend>Syöttölomake</legend>
+        <form action="">
+            <label for="avain">Avainkenttä:</label>
+            <input type="text" id="avain" placeholder="Syötä tähän yksilöllinen arvo">
+            <label for="enimi">Etunimi:</label>
+            <input type="text" id="enimi" placeholder="Syötä tähän etunimi">
+            <label for="snimi">Sukunimi:</label>
+            <input type="text" id="snimi" placeholder="Syötä tähän sukunimi">
+            <label for="losoite">Lähiosoite:</label>
+            <input type="text" id="losoite" placeholder="Syötä tähän lähiosoite">
+            <label for="pnro">Postinumero:</label>
+            <input type="text" id="pnro" placeholder="Syötä tähän postinumero">
+            <label for="ptpaikka">Postitoimipaikka:</label>
+            <input type="text" id="ptpaikka" placeholder="Syötä tähän postitoimipaikka">
+            <label for="puhelin">Puhelinnumero:</label>
+            <input type="text" id="puhelin" placeholder="Syötä tähän puhelinnumero">
+            <label for="sposti">Sähköposti:</label>
+            <input type="text" id="sposti" placeholder="Syötä tähän sähköposti">
+            <button onclick="tallenna()">Tallenna</button>
+            <button onclick="listaa()">Listaa</button>
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>Hakuarvot</legend>
+        <p id="vastaus"></p>
+    </fieldset>
+    <script src="local.js"></script>
+</body>
+</html>
