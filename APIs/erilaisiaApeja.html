@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="erilaisiaApeja.js"></script>
+    <title>Document</title>
+    <style>
+    label {
+        display: inline-block;
+        width: 100px;
+        text-align: left;
+    }
+    .siirra, select{
+        margin-left: 100px;
+    }
+    button{
+        width: 28.5%;
+    }
+    input{
+        width: 27.8%;
+    }
+    </style>
+</head>
+<body>
+    <!-- Isävitsit -->
+    <h2>Isävitsi</h2>
+    <button onclick="rapidApi()" class="siirra">Isävitsi</button>
+    <div id="kaannos"></div>
+
+    <!-- Tietoja kaupungeista -->
+    <h2>Tietoa kaupungeista</h2>
+    <button onclick="referential()" class="siirra">Ref</button>
+    <div id="tahan"></div>
+
+    <!-- Paikallinen sää -->
+    <h2>Säätila</h2>
+    <label>Kaupunki: </label><input type="text" id="kaupunki"><br/>
+    <button onclick="saa()" class="siirra">Säätila</button>
+    <div id="saa"></div>
+
+    <!-- Rakkauslaskin -->
+    <h2>Rakkauslaskin</h2>
+    <label>Mies:</label><input type="text" id="mies"><br/>
+    <label>Nainen:</label><input type="text" id="nainen"><br/>
+    <button onclick="rakkaus()" class="siirra">Testaa yhteensopivuus</button>
+    <div id="yhteensopivat"></div>
+
+    <!-- Leffojen ja TV-sarjojen haku -->
+    <h2>Hae leffoja ja tv-sarjoja</h2>
+    <label>Aloitusvuosi:</label><input type="text" id="avuosi"><br/>
+    <label>Lopetusvuosi:</label><input type="text" id="lvuosi"><br/>
+    <label>Kieli:</label><input type="text" id="kieli"><br/>
+    <label>Tyyppi:</label><input type="text" id="tyyppi"><br/>
+    <button onclick="leffat()" class="siirra">Leffat</button>
+    <div id="ltahan"></div>
+
+    <!-- Tietoja koirista -->
+    <button onclick="koirat()" class="siirra">Tietoa koirista</button>
+    <div id="koirat"></div>
+
+    <!-- Satunnainen koirakuva -->
+    <div id="koirakuva"></div>
+
+   
+    <!-- Kääntäjä -->
+    <h2>Kääntäjä</h2>
+    <label for="">Käännettävä teksti: </label><input type="text" id="teksti" ><br/>
+    <label for="">Kieli: </label><input type="text" id="language"><br/>
+    <button onclick="vienna()" class="siirra">Käännä</button>
+    <div id="kaannosteksti"></div>
+
+    <!-- Chuck Norris vitsit-->
+    <h2>Chuck Norris -vitsi</h2>
+    <button onclick="chuck()" class="siirra">Uusi vitsi</button>
+    <div id="chuck"></div>
+
+    <!-- Musiikin etsintä -->
+    <h2>Musiikkikone</h2>
+    <label>Artisti:</label><input type="text" id="art"><br/>
+    <button onclick="musa()" class="siirra">Soita musiikkia</button>
+</body>
+</html>

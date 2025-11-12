@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Projekti 5_Muistipeli.css">
+    <title>Muistipeli</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="Projekti 5_Muistipeli_Aloitus.html"><li>Aloitus</li></a>
+            <a href="Projekti 5_Muistipeli.html"><li>Muistipeli</li></a>
+        </nav>
+    </header>
+
+    <fieldset>
+       <label>Anna korkeus ja leveys:</label> 
+       <input type="number" id="korkeus" max="6" min="1">
+       <input type="number" id="leveys" max="6" min="1">
+       
+       <button onClick="luo()">Luo</button>
+       <button onClick="reset()">Reset</button>
+       
+       <p id="arvaukset" style="margin: 0; display: inline; float: left;">Arvausten määrä: 0</p>
+       <p id="aika" style="margin: 0; display: inline; float: left;">Aika: 00:00:00</p>
+       <br/>
+
+       <table style="margin:auto;">
+        <tr id="Rivi1">
+            <td><img src="Kuvat/kuva0.png" id="Kuva00" onclick="kaannaKortti('Kuva00')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva01" onclick="kaannaKortti('Kuva01')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva02" onclick="kaannaKortti('Kuva02')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva03" onclick="kaannaKortti('Kuva03')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva04" onclick="kaannaKortti('Kuva04')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva05" onclick="kaannaKortti('Kuva05')"></td>
+        </tr>
+        
+        <tr id="Rivi2">
+            <td><img src="Kuvat/kuva0.png" id="Kuva06" onclick="kaannaKortti('Kuva06')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva07" onclick="kaannaKortti('Kuva07')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva08" onclick="kaannaKortti('Kuva08')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva09" onclick="kaannaKortti('Kuva09')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva10" onclick="kaannaKortti('Kuva10')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva11" onclick="kaannaKortti('Kuva11')"></td>
+        </tr>  
+        
+        <tr id="Rivi3">
+            <td><img src="Kuvat/kuva0.png" id="Kuva12" onclick="kaannaKortti('Kuva12')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva13" onclick="kaannaKortti('Kuva13')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva14" onclick="kaannaKortti('Kuva14')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva15" onclick="kaannaKortti('Kuva15')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva16" onclick="kaannaKortti('Kuva16')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva17" onclick="kaannaKortti('Kuva17')"></td>
+        </tr>
+        
+        <tr id="Rivi4">
+            <td><img src="Kuvat/kuva0.png" id="Kuva18" onclick="kaannaKortti('Kuva18')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva19" onclick="kaannaKortti('Kuva19')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva20" onclick="kaannaKortti('Kuva20')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva21" onclick="kaannaKortti('Kuva21')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva22" onclick="kaannaKortti('Kuva22')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva23" onclick="kaannaKortti('Kuva23')"></td>
+        </tr>
+
+        <tr id="Rivi5">
+            <td><img src="Kuvat/kuva0.png" id="Kuva24" onclick="kaannaKortti('Kuva24')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva25" onclick="kaannaKortti('Kuva25')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva26" onclick="kaannaKortti('Kuva26')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva27" onclick="kaannaKortti('Kuva27')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva28" onclick="kaannaKortti('Kuva28')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva29" onclick="kaannaKortti('Kuva29')"></td>
+        </tr> 
+
+        <tr id="Rivi6">
+            <td><img src="Kuvat/kuva0.png" id="Kuva30" onclick="kaannaKortti('Kuva30')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva31" onclick="kaannaKortti('Kuva31')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva32" onclick="kaannaKortti('Kuva32')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva33" onclick="kaannaKortti('Kuva33')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva34" onclick="kaannaKortti('Kuva34')"></td>
+            <td><img src="Kuvat/kuva0.png" id="Kuva35" onclick="kaannaKortti('Kuva35')"></td>
+        </tr>
+       </table>
+    </fieldset>
+
+    <script src="Projekti 5_Muistipeli.js"></script>
+</body>
+</html>
