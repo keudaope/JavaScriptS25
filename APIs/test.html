@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Nimipäiväänsä viettävät</title>
+    <style>
+        body {
+            font-family: "Georgia", "Times New Roman", serif;
+            background-color: #ffffff;
+        }
+
+        .kortti {
+            max-width: 520px;
+            margin: 10px;
+            padding: 20px 25px 25px 25px;
+            background-color: #eef1f6;
+            border: 4px solid #c33;
+            border-radius: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .otsikko {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 4px 0;
+        }
+
+        label {
+            display: inline-block;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+
+        input[type="date"],
+        input[type="text"] {
+            padding: 3px 5px;
+            font-size: 14px;
+        }
+
+        .tulos {
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="kortti">
+    <h1>Nimipäiväänsä viettävät:</h1>
+
+    <p id="tanaan"></p>
+
+    <p class="otsikko">Ja huomenna</p>
+    <p id="huomenna"></p>
+
+    <p class="otsikko">Ja eilen</p>
+    <p id="eilen"></p>
+
+    <div>
+        <label for="paiva">Anna päivä:</label>
+        <input type="date" id="paiva">
+        <p class="tulos" id="paiva-tulos"></p>
+    </div>
+
+    <div>
+        <label for="nimi">Anna nimi:</label>
+        <input type="text" id="nimi" placeholder="Jalmari">
+        <p class="tulos" id="nimi-tulos"></p>
+    </div>
+</div>
+
+<script>
+    const COUNTRY = "fi";
+    const TIMEZONE = "Europe/Helsinki";
+    const API_ROOT_V2 = "https://nameday.abalin.net/api/V2";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // tänään / huomenna / eilen haetaan omilla endpointeilla
+        haeRelative("tanaan", "today");
+        haeRelative("huomenna", "tomorrow");
+        haeRelative("eilen", "yesterday");
+
+        // Päivä-input
+        document.getElementById("paiva").addEventListener("change", haePaivalla);
+
+        // Nimi-input
+        const nimiInput = document.getElementById("nimi");
+        nimiInput.addEventListener("change", haeNimella);
+        nimiInput.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") haeNimella();
+        });
+    });
+
+    // ===== API-kutsut =====
+
+    // today / tomorrow / yesterday
+    async function haeRelative(elementId, endpoint) {
+        const el = document.getElementById(elementId);
+        el.textContent = "Ladataan...";
+
+        const url = `${API_ROOT_V2}/${endpoint}?country=${COUNTRY}&timezone=${encodeURIComponent(TIMEZONE)}`;
+
+        try {
+            const res = await fetch(url);
+            if (!res.ok) {
+                throw new Error("HTTP " + res.status);
+            }
+            const data = await res.json();
+            // V2-dokumentaation mukaan nimet ovat data.fi, data.sk jne. :contentReference[oaicite:0]{index=0}
+            const namesString =
+                (data.data && (data.data[COUNTRY] || data.data[COUNTRY.toUpperCase()])) ||
+                (data.nameday && (data.nameday[COUNTRY] || data.nameday[COUNTRY.toUpperCase()])) ||
+                "";
+
+            const names = pilkoNimet(namesString);
+
+            const today = new Date();
+            if (endpoint === "tomorrow") today.setDate(today.getDate() + 1);
+            if (endpoint === "yesterday") today.setDate(today.getDate() - 1);
+
+            const pvm = muodostaPaivaTeksti(today, true);
+
+            if (names.length === 0) {
+                el.textContent = `${pvm} (ei nimipäiviä)`;
+            } else {
+                el.textContent = `${pvm} ${names.join(", ")}`;
+            }
+        } catch (err) {
+            console.error("Relative endpoint virhe:", err);
+            el.textContent = "(virhe nimipäivän haussa)";
+        }
+    }
+
+    // nimipäivä tietylle päivälle (date input)
+    async function haeNimetPaivalle(dateObj) {
+        const month = dateObj.getMonth() + 1;
+        const day = dateObj.getDate();
+        const url = `${API_ROOT_V2}/namedays?country=${COUNTRY}&month=${month}&day=${day}`;
+
+        const res = await fetch(url);
+        if (!res.ok) {
+            throw new Error("HTTP " + res.status);
+        }
+        const data = await res.json();
+
+        // Mahdollisia muotoja:
+        // V2: { data: { fi: "Jalmari, Jari" } }  :contentReference[oaicite:1]{index=1}
+        // publicapi-esimerkki: { data: { names: ["John","Mary"] } } :contentReference[oaicite:2]{index=2}
+        // V1: { nameday: { fi: "..." } } tai { namedays: { fi: [...] } } :contentReference[oaicite:3]{index=3}
+
+        if (data.data) {
+            if (data.data[COUNTRY]) {
+                return pilkoNimet(data.data[COUNTRY]);
+            }
+            if (data.data[COUNTRY.toUpperCase()]) {
+                return pilkoNimet(data.data[COUNTRY.toUpperCase()]);
+            }
+            if (Array.isArray(data.data.names)) {
+                return data.data.names;
+            }
+        }
+        if (data.nameday) {
+            if (data.nameday[COUNTRY]) return pilkoNimet(data.nameday[COUNTRY]);
+            if (data.nameday[COUNTRY.toUpperCase()]) return pilkoNimet(data.nameday[COUNTRY.toUpperCase()]);
+        }
+        if (data.namedays) {
+            if (Array.isArray(data.namedays[COUNTRY])) return data.namedays[COUNTRY];
+        }
+        return [];
+    }
+
+    // nimellä → päivät
+    async function haePaivatNimelle(name) {
+        const url = `${API_ROOT_V2}/namedays?country=${COUNTRY}&name=${encodeURIComponent(name)}`;
+
+        const res = await fetch(url);
+        if (!res.ok) {
+            throw new Error("HTTP " + res.status);
+        }
+        const data = await res.json();
+
+        // docs-esimerkki V2: { data: { dates: ["October 25","December 27"] } } :contentReference[oaicite:4]{index=4}
+        if (data.data && Array.isArray(data.data.dates)) {
+            return data.data.dates;
+        }
+        // fallback: jos API palauttaakin yhden "date" kentän
+        if (data.data && data.data.date) {
+            return [data.data.date];
+        }
+        return [];
+    }
+
+    // ===== UI-logiikka =====
+
+    function muodostaPaivaTeksti(dateObj, naytaVuosi = true) {
+        const d = String(dateObj.getDate()).padStart(2, "0");
+        const m = String(dateObj.getMonth() + 1).padStart(2, "0");
+        if (!naytaVuosi) return `${d}.${m}.`;
+        const y = dateObj.getFullYear();
+        return `${d}.${m}.${y}`;
+    }
+
+    function pilkoNimet(str) {
+        if (!str) return [];
+        if (Array.isArray(str)) return str;
+        // "Jalmari, Jari" --> ["Jalmari", "Jari"]
+        return String(str)
+            .split(",")
+            .map(s => s.trim())
+            .filter(Boolean);
+    }
+
+    async function haePaivalla() {
+        const input = document.getElementById("paiva");
+        const tulos = document.getElementById("paiva-tulos");
+
+        if (!input.value) {
+            tulos.textContent = "";
+            return;
+        }
+
+        const [year, month, day] = input.value.split("-").map(Number);
+        const dateObj = new Date(year, month - 1, day);
+
+        tulos.textContent = "Haetaan...";
+
+        try {
+            const names = await haeNimetPaivalle(dateObj);
+            const pvmLyhyt = muodostaPaivaTeksti(dateObj, false);
+            if (names.length === 0) {
+                tulos.textContent = `${pvmLyhyt} (ei nimipäiviä)`;
+            } else {
+                tulos.textContent = `${pvmLyhyt} ${names.join(", ")}`;
+            }
+        } catch (err) {
+            console.error("haePaivalla virhe:", err);
+            tulos.textContent = "Virhe nimipäivän haussa.";
+        }
+    }
+
+    async function haeNimella() {
+        const input = document.getElementById("nimi");
+        const tulos = document.getElementById("nimi-tulos");
+        const name = input.value.trim();
+
+        if (!name) {
+            tulos.textContent = "";
+            return;
+        }
+
+        tulos.textContent = "Haetaan...";
+
+        try {
+            const dateStrings = await haePaivatNimelle(name);
+            if (dateStrings.length === 0) {
+                tulos.textContent = `Nimeä "${name}" ei löytynyt.`;
+                return;
+            }
+
+            const year = new Date().getFullYear();
+            const rows = [];
+
+            for (const ds of dateStrings) {
+                const d = new Date(`${ds} ${year}`); // "October 25" → Date
+                if (isNaN(d)) {
+                    rows.push(`${ds}: ${name}`);
+                    continue;
+                }
+
+                const names = await haeNimetPaivalle(d);
+                const pvmLyhyt = muodostaPaivaTeksti(d, false);
+                rows.push(`${pvmLyhyt} ${names.join(", ")}`);
+            }
+
+            tulos.innerHTML = rows.join("<br>");
+        } catch (err) {
+            console.error("haeNimella virhe:", err);
+            tulos.textContent = "Virhe nimen haussa.";
+        }
+    }
+</script>
+</body>
+</html>
