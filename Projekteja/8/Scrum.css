@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.board {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+/* Sarakkeet */
+.column {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    flex: 1;
+    min-width: 200px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.column h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.column-body {
+    min-height: 200px;
+    padding: 8px;
+    border-radius: 6px;
+    background: #fafafa;
+    border: 2px dashed transparent;
+    transition: border 0.2s ease, background 0.2s ease;
+}
+
+.column-body.column-over {
+    border-color: #4a90e2;
+    background: #eaf3ff;
+}
+
+/* Tehtäväkortit */
+.task {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    cursor: grab;
+    font-size: 14px;
+}
+
+.task:active {
+    cursor: grabbing;
+}
+
+.task.dragging {
+    opacity: 0.5;
+}

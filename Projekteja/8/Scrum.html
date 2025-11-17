@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>SCRUM-taulu</title>
+    <link rel="stylesheet" href="Scrum.css">
+</head>
+<body>
+    <h1>SCRUM-taulu</h1>
+
+    <div class="board">
+        <!-- Sprintissä tehtävät työt -->
+        <section class="column">
+            <h2>Sprintissä tehtävät työt</h2>
+            <div class="column-body">
+                <div class="task" draggable="true">Kirjoita vaatimusmäärittely</div>
+                <div class="task" draggable="true">Suunnittele tietokantakaavio</div>
+                <div class="task" draggable="true">Tee käyttöliittymän prototyyppi</div>
+            </div>
+        </section>
+
+        <!-- Työn alla -->
+        <section class="column">
+            <h2>Työn alla</h2>
+            <div class="column-body">
+                <div class="task" draggable="true">Toteuta kirjautumissivu</div>
+            </div>
+        </section>
+
+        <!-- Testaus -->
+        <section class="column">
+            <h2>Testaus</h2>
+            <div class="column-body">
+                <div class="task" draggable="true">Testaa lomakevalidointi</div>
+            </div>
+        </section>
+
+        <!-- Valmis -->
+        <section class="column">
+            <h2>Valmis</h2>
+            <div class="column-body">
+                <div class="task" draggable="true">Perusta Git-repositorio</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="Scrum.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+article{
+    width: 300px;
+    background-color: lemonchiffon;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+img{
+    border-radius: 50%;
+}

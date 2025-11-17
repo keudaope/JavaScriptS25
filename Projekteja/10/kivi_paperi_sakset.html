@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kivi · Paperi · Sakset</title>
+    <link rel="stylesheet" href="kivi_paperi_sakset.css">
+    <script defer src="kivi_paperi_sakset.js"></script>
+</head>
+<body>
+    <div class="game">
+        <h1>Kivi · Paperi · Sakset</h1>
+
+        <div class="scoreboard">
+            <div>Sinä: <span id="player-score">0</span></div>
+            <div>Tietokone: <span id="computer-score">0</span></div>
+        </div>
+
+        <div class="choices">
+            <button class="choice" data-choice="kivi">
+                <span class="hand" aria-hidden="true">✊</span>
+                <span class="label">Kivi</span>
+            </button>
+            <button class="choice" data-choice="paperi">
+                <span class="hand" aria-hidden="true">✋</span>
+                <span class="label">Paperi</span>
+            </button>
+            <button class="choice" data-choice="sakset">
+                <span class="hand" aria-hidden="true">✌️</span>
+                <span class="label">Sakset</span>
+            </button>
+        </div>
+
+        <div class="result">
+            <p id="message">Valitse kivi, paperi tai sakset aloittaaksesi!</p>
+
+            <div class="hands">
+                <div class="hand-box">
+                    <h3>Sinä</h3>
+                    <div id="player-hand" class="hand big">❔</div>
+                </div>
+                <div class="hand-box">
+                    <h3>Tietokone</h3>
+                    <div id="computer-hand" class="hand big">❔</div>
+                </div>
+            </div>
+        </div>
+
+        <button id="reset">Nollaa pisteet</button>
+    </div>
+</body>
+</html>
