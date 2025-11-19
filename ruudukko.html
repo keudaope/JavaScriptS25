@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>4x4 ruudukko</title>
+    <style>
+        .ruudukko {
+            display: grid;
+            /* 4 saraketta, jokainen 80px leveä */
+            grid-template-columns: repeat(4, 80px);
+            /* jokainen rivi 80px korkea */
+            grid-auto-rows: 80px;
+            gap: 5px;                /* väliä solujen väliin */
+            width: max-content;      /* ei veny 100% leveäksi */
+            margin: 20px auto;       /* keskitys sivulla */
+            border: 1px solid #ccc;
+        }
+
+        .solu {
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eee;
+            font-family: Arial, sans-serif;
+        }
+
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="ruudukko">
+    <div class="solu"><img src="https://pixnio.com/free-images/2017/09/26/2017-09-26-09-59-07-960x640.jpg" alt=""></div>
+    <div class="solu">2</div>
+    <div class="solu">3</div>
+    <div class="solu">4</div>
+    <div class="solu">5</div>
+    <div class="solu">6</div>
+    <div class="solu">7</div>
+    <div class="solu">8</div>
+    <div class="solu">9</div>
+    <div class="solu">10</div>
+    <div class="solu">11</div>
+    <div class="solu">12</div>
+    <div class="solu">13</div>
+    <div class="solu">14</div>
+    <div class="solu">15</div>
+    <div class="solu">16</div>
+</div>
+
+</body>
+</html>

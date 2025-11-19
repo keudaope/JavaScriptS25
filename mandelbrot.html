@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Mandelbrotin joukko</title>
+    <link rel="stylesheet" href="mandelbrot.css">
+</head>
+<body>
+    <h1>Mandelbrotin kuvio</h1>
+
+    <div class="controls">
+        <label>
+            Leveys:
+            <input type="number" id="widthInput" value="800">
+        </label>
+        <label>
+            Korkeus:
+            <input type="number" id="heightInput" value="600">
+        </label>
+        <label>
+            Iteraatioita:
+            <input type="number" id="iterInput" value="200">
+        </label>
+        <button id="drawBtn">Piirrä Mandelbrot</button>
+    </div>
+
+    <div class="canvas-wrapper">
+        <canvas id="mandelbrotCanvas" width="800" height="600"></canvas>
+    </div>
+
+    <p class="info">
+        Mandelbrotin joukko piirretään käymällä läpi jokainen pikseli ja iteromalla
+        funktiota \( z_{n+1} = z_n^2 + c \), missä \( c \) on kompleksiluku, joka
+        vastaa pikselin sijaintia.
+    </p>
+
+    <script src="mandelbrot.js"></script>
+</body>
+</html>
