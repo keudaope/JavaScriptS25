@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sivun otsikko -->
+    <h1>Customer Management</h1>
+
+    <!-- Lomake asiakkaan lisäämiseen -->
+    <form id="customerForm">
+        <input type="text" id="name" placeholder="Name" required> <!-- Asiakkaan nimi -->
+        <input type="email" id="email" placeholder="Email" required> <!-- Asiakkaan sähköposti -->
+        <input type="text" id="phone" placeholder="Phone" required> <!-- Asiakkaan puhelinnumero -->
+        <button type="submit">Add Customer</button> <!-- Lähetä painike -->
+    </form>
+
+    <!-- Taulukko asiakkaiden tietojen näyttämiseen -->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="customerTable">
+            <!-- Asiakastiedot lisätään dynaamisesti JavaScriptillä -->
+        </tbody>
+    </table>
+
+    <script src="script.js"></script> <!-- JavaScript-tiedosto -->
+</body>
+</html>

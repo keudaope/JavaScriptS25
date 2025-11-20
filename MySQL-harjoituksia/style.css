@@ -1,0 +1,51 @@
+body {
+    background: yellow !important;
+}
+/* Hakukentän tyhjennyslinkki */
+.clear-search {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.clear-search:hover {
+    background-color: #f0f0f0;
+}
+
+/* Sivutus */
+.pagination {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.pagination a,
+.pagination span {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.pagination a {
+    background-color: #fff;
+    color: #333;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .current {
+    background-color: #4a90e2;
+    color: #fff;
+    border-color: #4a90e2;
+}

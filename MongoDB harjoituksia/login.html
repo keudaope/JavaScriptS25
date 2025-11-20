@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kirjautuminen</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Kirjaudu sisään</h1>
+    <form id="login-form">
+      <label for="username">Käyttäjänimi</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="password">Salasana</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">Kirjaudu</button>
+
+      <div id="login-message" class="message"></div>
+    </form>
+
+    <div class="link">
+      Ei vielä tunnusta?
+      <a href="register.html">Rekisteröidy tästä</a>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
